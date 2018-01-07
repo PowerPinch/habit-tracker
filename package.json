@@ -1,0 +1,25 @@
+{
+  "name": "track-your-shit",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PowerPinch/track-your-shit.git"
+  },
+  "author": "Jonathan Brune",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/PowerPinch/track-your-shit/issues"
+  },
+  "homepage": "https://github.com/PowerPinch/track-your-shit#readme",
+  "dependencies": {
+    "@babel/core": "^7.0.0-beta.36",
+    "@babel/preset-env": "^7.0.0-beta.36",
+    "babel-loader": "^8.0.0-beta.0",
+    "webpack": "^3.10.0"
+  }
+}
