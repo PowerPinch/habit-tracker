@@ -1,17 +1,13 @@
-import React from "react"
-import ReactDOM from "react-dom"
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 class HelloMessage extends React.Component {
-  render() {
-    return (
-      <div>
-        Hello {this.props.name}
-      </div>
-    );
+  render () {
+    return <div>Hello {this.props.name}</div>
   }
 }
 
 ReactDOM.render(
   <HelloMessage name="Christian" />,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)
