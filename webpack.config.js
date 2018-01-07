@@ -1,4 +1,4 @@
-const webpack = require("webpack")
+const webpack = require('webpack')
 
 module.exports = {
   devtool: 'inline-source-map',
@@ -15,7 +15,7 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
+          loader: 'babel-loader'
         }
       },
       {
@@ -26,6 +26,6 @@ module.exports = {
   },
   plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: true
   }
-};
+}

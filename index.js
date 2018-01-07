@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 
-class HelloMessage extends React.Component {
+import NewHabitForm from './new-habit-form'
+import HabitList from './habit-list'
+
+class App extends React.Component {
+  state = { items: [] }
   render () {
-    return <div>Hello {this.props.name}</div>
+    return (
+      <Fragment>
+        <NewHabitForm
+          onSave={value => {
+            this.setState({ items: [...this.state.items, value] })
+          }}
+        />
+        <HabitList items={this.state.items} />
+      </Fragment>
+    )
   }
 }
 
-ReactDOM.render(
-  <HelloMessage name="Christian" />,
-  document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'))
