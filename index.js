@@ -15,7 +15,6 @@ class App extends React.Component {
             this.setState(({ items }) => ({
               items: [...items, value]
             }))
-            console.log(this.state.items)
           }}
         />
         <HabitList
