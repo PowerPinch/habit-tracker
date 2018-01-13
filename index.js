@@ -12,24 +12,27 @@ class App extends React.Component {
       <Fragment>
         <NewHabitForm
           onSave={value => {
-            this.setState({ items: [...this.state.items, value] })
+            this.setState(({ items }) => ({
+              items: [...items, value]
+            }))
+            console.log(this.state.items)
           }}
         />
         <HabitList
           items={this.state.items}
           onDelete={index => {
             if (window.confirm('Are you sure you want to delete?')) {
-              this.setState({
+              this.setState(({ items }) => ({
                 items: R.addIndex(R.filter)((items, idx) => idx !== index)(
-                  this.state.items
+                  items
                 )
-              })
+              }))
             }
           }}
           onChange={(item, index) => {
-            this.setState({
-              items: R.update(index, item, this.state.items)
-            })
+            this.setState(({ items }) => ({
+              items: R.update(index, item, items)
+            }))
           }}
         />
       </Fragment>

@@ -18,8 +18,8 @@ export default class NewHabitForm extends Component {
     )
   }
 
-  setName = e => {
-    this.setState({ value: e.target.value })
+  setName = ({ target: { value } }) => {
+    this.setState({ value })
   }
   saveHabit = () => {
     const trimValue = trim(this.state.value)
