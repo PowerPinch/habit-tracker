@@ -21,9 +21,13 @@ const parseRequest = (req, res, callback) => {
   })
 }
 const server = http.createServer((req, res) => {
+  const itemId = req.url.slice(1)
   switch (req.method) {
+    case 'DELETE':
+      itemList = R.reject(({ item, id }) => id === itemId, itemList)
+      res.end()
+      break
     case 'PUT':
-      const itemId = req.url.slice(1)
       parseRequest(req, res, ({ item: newItem }) => {
         itemList = R.map(
           ({ item, id }) =>
