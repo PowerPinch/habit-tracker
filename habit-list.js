@@ -4,8 +4,8 @@ import EditableInline from 'react-editable-inline'
 
 const HabitList = ({ items, onDelete, onChange }) => (
   <ul>
-    {R.addIndex(R.map)((item, index) => (
-      <li key={index + item}>
+    {R.map(({ item, id }) => (
+      <li key={id}>
         <EditableInline
           render={({ isEditing, startEditing, finishEditing, inputProps }) =>
             isEditing ? (
@@ -16,7 +16,7 @@ const HabitList = ({ items, onDelete, onChange }) => (
                 />
                 <button
                   onMouseDown={e => e.preventDefault()}
-                  onClick={() => onDelete(index)}
+                  onClick={() => onDelete(id)}
                 >
                   X
                 </button>
@@ -30,7 +30,7 @@ const HabitList = ({ items, onDelete, onChange }) => (
               </span>
             )
           }
-          onChange={newItem => onChange(newItem, index)}
+          onChange={newItem => onChange(newItem, id)}
           value={item}
         />
       </li>

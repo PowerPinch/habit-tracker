@@ -26,6 +26,12 @@ module.exports = {
   },
   plugins: [new webpack.EnvironmentPlugin(['NODE_ENV'])],
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000/',
+        pathRewrite: { '^/api': '' }
+      }
+    }
   }
 }

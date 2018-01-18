@@ -1,12 +1,20 @@
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import * as R from 'ramda'
+import fetch from 'isomorphic-unfetch'
 
 import NewHabitForm from './new-habit-form'
 import HabitList from './habit-list'
 
 class App extends React.Component {
   state = { items: [] }
+
+  componentDidMount () {
+    fetch('/api/').then(response => {
+      response.json().then(items => this.setState({ items }))
+    })
+  }
+
   render () {
     return (
       <Fragment>
