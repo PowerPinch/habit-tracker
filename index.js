@@ -8,11 +8,13 @@ import HabitList from './habit-list'
 
 class App extends React.Component {
   state = { items: [] }
-
-  componentDidMount () {
-    fetch('/api/').then(response => {
+  refreshItems () {
+    return fetch('/api/').then(response =>
       response.json().then(items => this.setState({ items }))
-    })
+    )
+  }
+  componentDidMount () {
+    this.refreshItems().catch(e => console.error(e))
   }
 
   render () {
@@ -20,26 +22,38 @@ class App extends React.Component {
       <Fragment>
         <NewHabitForm
           onSave={value => {
-            this.setState(({ items }) => ({
-              items: [...items, value]
-            }))
+            fetch('/api/', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ item: value })
+            })
+              .then(() => this.refreshItems())
+              .catch(e => console.error(e))
           }}
         />
         <HabitList
           items={this.state.items}
-          onDelete={index => {
+          onDelete={id => {
             if (window.confirm('Are you sure you want to delete?')) {
-              this.setState(({ items }) => ({
-                items: R.addIndex(R.filter)((items, idx) => idx !== index)(
-                  items
-                )
-              }))
+              fetch(`/api/${id}`, {
+                method: 'DELETE'
+              })
+                .then(() => this.refreshItems())
+                .catch(e => console.error(e))
             }
           }}
-          onChange={(item, index) => {
-            this.setState(({ items }) => ({
-              items: R.update(index, item, items)
-            }))
+          onChange={(item, id) => {
+            fetch(`/api/${id}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ item })
+            })
+              .then(() => this.refreshItems())
+              .catch(e => console.error(e))
           }}
         />
       </Fragment>

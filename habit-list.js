@@ -26,7 +26,7 @@ const HabitList = ({ items, onDelete, onChange }) => (
                 onClick={() => startEditing()}
                 onFocus={() => startEditing()}
               >
-                {item}
+                {item.trim() === '' ? 'PUT SHIT HERE' : item}
               </span>
             )
           }
