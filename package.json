@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/PowerPinch/track-your-shit#readme",
   "dependencies": {
+    "express": "^4.16.2",
     "isomorphic-unfetch": "^2.0.0",
     "luxon": "^0.2.12",
     "polished": "^1.9.0",

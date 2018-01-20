@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
-import * as R from 'ramda'
 import fetch from 'isomorphic-unfetch'
 
 import NewHabitForm from './new-habit-form'
