@@ -1,10 +1,21 @@
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import fetch from 'isomorphic-unfetch'
+import { injectGlobal } from 'styled-components'
+import { normalize } from 'polished'
 
 import NewHabitForm from './new-habit-form'
 import HabitList from './habit-list'
 
+injectGlobal`
+  @import url('https://fonts.googleapis.com/css?family=Playfair+Display|Raleway');
+
+  ${normalize()}
+
+  body {
+    font-family: 'Raleway', sans-serif;
+  }
+`
 class App extends React.Component {
   state = { items: [] }
   refreshItems () {

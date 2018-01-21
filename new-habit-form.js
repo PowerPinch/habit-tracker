@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import { trim } from 'lodash/fp'
 
+import { Button, Input } from './utils'
 export default class NewHabitForm extends Component {
   state = { value: '' }
 
   render () {
     return (
       <div>
-        <input
+        <Input
           type="text"
           placeholder="Name your shit"
           value={this.state.value}
           onChange={this.setName}
         />
-        <button onClick={this.saveHabit}>Submit new shit</button>
+        <Button onClick={this.saveHabit}>Submit new shit</Button>
       </div>
     )
   }
