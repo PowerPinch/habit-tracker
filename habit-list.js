@@ -9,14 +9,13 @@ const HabitItem = styled.li`
   display: flex;
   list-style-type: none;
   margin-left: 0.75rem;
-  border: 0.1rem solid black;
+  border: ${props => props.theme.thinBorder};
   border-radius: 0.5rem;
-  padding: 0.25rem 0.5rem;
+  padding: ${props => props.theme.smallPad};
   box-shadow: 0 0 0.25rem gray;
 `
 const HabitItemList = styled.ul`
   display: flex;
-  width: 100vw;
 `
 const HabitItemText = styled.span`
   white-space: nowrap;
